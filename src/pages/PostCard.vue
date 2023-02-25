@@ -3,10 +3,15 @@
     <img :src="post.img" style="height: 15rem" class="card-img-top image-fluid" :alt="'image'">
     <div class="card-body">
       <p class="card-text">{{ post.body }}</p>
-      <router-link :to="{ name: 'Profile', params: { profileId: post.creatorId } }">
-        <img :src="post.creator.picture" :alt="post.creator.name" class="profile-picture"
-          :title="`Go to ${post.creator.name}'s profile page! ;^)`">
-      </router-link>
+      <div class="d-flex justify-content-between">
+        {{ post.creator.name }}
+        <!-- creator name and date to go here -->
+        <router-link :to="{ name: 'Profile', params: { profileId: post.creatorId } }">
+          <img :src="post.creator.picture" :alt="post.creator.name" class="profile-picture"
+            :title="`Go to ${post.creator.name}'s profile page! ;^)`">
+        </router-link>
+
+      </div>
     </div>
   </div>
 </template>
