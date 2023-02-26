@@ -1,11 +1,18 @@
 <template>
   <div class="card" style="width: 30rem; ">
-    <img :src="post.img" style="height: 15rem" class="card-img-top image-fluid" :alt="'image'">
+    <img :src="post.img" style="height: 15rem" class="card-img-top image-fluid" />
     <div class="card-body">
       <p class="card-text">{{ post.body }}</p>
       <div class="d-flex justify-content-between">
         {{ post.creator.name }}
-        <!-- creator name and date to go here -->
+        {{ post.createdAt }}
+        <div class="d-flex justify-content-end text-center">
+          <!-- <i class="mdi mdi-thumb-up"></i> -->
+          {{ post.likes.length }}
+
+        </div>
+
+        <!-- NOTE creator name and date to go here -->
         <router-link :to="{ name: 'Profile', params: { profileId: post.creatorId } }">
           <img :src="post.creator.picture" :alt="post.creator.name" class="profile-picture"
             :title="`Go to ${post.creator.name}'s profile page! ;^)`">
@@ -19,6 +26,7 @@
 
 <script>
 import { Post } from '../models/Post.js';
+import { postsService } from '../services/PostsService.js';
 
 export default {
 
@@ -28,8 +36,13 @@ export default {
       required: true
     }
   },
-  setup() {
-    return {}
+
+  setup(props) {
+    return {
+      setActivePost() {
+        postsService.setActivePost(props.post)
+      }
+    }
   }
 }
 </script>

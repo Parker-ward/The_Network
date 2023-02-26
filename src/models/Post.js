@@ -7,6 +7,7 @@ export class Post {
     this.img = data.imgUrl
     this.creatorId = data.creatorId
     this.likeIds = data.likeIds
+    this.likes = data.likes
     this.createdAt = new Date(data.createdAt).toLocaleDateString()
     this.creator = new Profile(data.creator)
   }

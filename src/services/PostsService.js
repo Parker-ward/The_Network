@@ -12,6 +12,32 @@ class PostsService {
     AppState.posts = res.data.posts.map(p => new Post(p))
     // logger.log('posts', new Post)
   }
+
+  async createPost(postData) {
+    const res = await api.post('/api/posts', postData)
+    logger.log('[My post]', res.data)
+    AppState.posts.push(res.data)
+    return res.data
+  }
+
+  async getPostsByQuery(query) {
+    const res = await api.get('api/posts', { params: query })
+    logger.log('get posts by profile', res.data)
+    AppState.posts = res.data.posts.map(p => new Post(p))
+  }
+
+  // async removePost(postId){
+  //   const res = await api.delete('/api/posts/' + postId)
+
+  // }
+
+  clearPosts() {
+    AppState.posts = []
+  }
+
+  setActivePost(post) {
+    AppState.post = post
+  }
 }
 
 
