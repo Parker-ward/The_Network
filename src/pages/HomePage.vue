@@ -16,7 +16,7 @@
           </div>
         </form> -->
 
-        <CreatePostForm />
+        <CreatePostForm v-if="account.id" />
       </div>
     </div>
     <div class="row justify-content-center ">
@@ -52,7 +52,8 @@ export default {
       getPosts();
     });
     return {
-      posts: computed(() => AppState.posts)
+      posts: computed(() => AppState.posts),
+      account: computed(() => AppState.account)
     };
   },
   components: { PostCard, CreatePostForm }

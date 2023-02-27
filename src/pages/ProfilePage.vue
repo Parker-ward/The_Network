@@ -14,8 +14,10 @@
     <div class="row">
       <div class="col-12 mb-3 d-flex justify-content-between align-items-baseline">
         <h1>
-          <span :class="`${profile.graduated ? 'Graduated' : ''}`">
+          <span>
+            {{ profile.graduated ? 'Graduated' : '' }}
             {{ profile.name }}
+
           </span>
           <span v-if="profile.github">
             <a :href="profile.github" target="_blank">
