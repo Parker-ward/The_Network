@@ -16,8 +16,8 @@ class PostsService {
   async createPost(postData) {
     const res = await api.post('/api/posts', postData)
     logger.log('[My post]', res.data)
-    AppState.posts.push(res.data)
-    return res.data
+    let newpost = new Post(res.data)
+    AppState.posts = [newpost, ...AppState.posts]
   }
 
   async getPostsByQuery(query) {

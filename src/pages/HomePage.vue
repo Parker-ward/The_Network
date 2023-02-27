@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-md-8">
-        <form>
+        <!-- <form>
           <div class="mb-3">
             <div class="mb-3">
               <label for="description" class="form-label">description</label>
@@ -14,7 +14,9 @@
               </button>
             </div>
           </div>
-        </form>
+        </form> -->
+
+        <CreatePostForm />
       </div>
     </div>
     <div class="row justify-content-center ">
@@ -28,6 +30,7 @@
 <script>
 import { computed, onMounted } from 'vue';
 import { AppState } from '../AppState.js';
+import CreatePostForm from '../components/CreatePostForm.vue';
 import PostCard from '../components/PostCard.vue';
 import { postsService } from '../services/PostsService.js';
 import { logger } from '../utils/Logger.js';
@@ -52,7 +55,7 @@ export default {
       posts: computed(() => AppState.posts)
     };
   },
-  components: { PostCard }
+  components: { PostCard, CreatePostForm }
 }
 </script>
 

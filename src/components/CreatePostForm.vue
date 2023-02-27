@@ -1,9 +1,8 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <div class="mb-3">
-      <label for="description" class="form-label">description</label>
-      <textarea name="description" v-model="editable.description" class="form-control" id="description"
-        rows="3"></textarea>
+      <label for="body" class="form-label">Body</label>
+      <textarea name="body" v-model="editable.body" class="form-control" id="body" rows="3"></textarea>
     </div>
 
     <div class="mb-3">
@@ -15,7 +14,7 @@
     <!-- NOTE delete Button Below-->
     <div>
       <button type="submit" class="btn btn-primary">
-        {{ editable.id ? 'Save Changes' : 'Create Post' }}
+        {{ editable.id ? 'Save Changes' : 'Submit' }}
       </button>
     </div>
 
@@ -24,6 +23,8 @@
 
 
 <script>
+import { ref } from 'vue';
+import { router } from '../router.js';
 import { postsService } from '../services/PostsService.js';
 import Pop from '../utils/Pop.js';
 
@@ -35,8 +36,12 @@ export default {
       async handleSubmit() {
         try {
           const post = editable.value.id
-            ? await postsService.editPost(editable.value)
-            : await postsService.createPost(editable.value)
+          // ? await postsService.editPost(editable.value)
+          await postsService.createPost(editable.value)
+          editable.value = {}
+          if (post?.id) {
+            router.push({ name: 'Post', params: { postId: post.id } })
+          }
         } catch (error) {
           Pop.error(error, '[Submit Post]')
         }
