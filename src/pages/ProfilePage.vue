@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="row">
-        <div v-for="p in post" class="col-md-7 m-auto mb-5">
+        <div v-for="p in post" class="col-md-7 m-auto mb-5 d-flex justify-content-center">
           <PostCard class="elevation-5 border-bottom border-dark border-5" :post="p" />
         </div>
       </div>
