@@ -26,10 +26,28 @@ class PostsService {
     AppState.posts = res.data.posts.map(p => new Post(p))
   }
 
-  // async removePost(postId){
-  //   const res = await api.delete('/api/posts/' + postId)
-
+  // async editPost(postData) {
+  //   const res = await api.put(/api/posts / + postData.id, postData)
+  //   let i = AppState.posts.findIndex(p => p.id == postData.id)
+  //   if (i == -1) {
+  //     throw new Error('are you sure?')
+  //   }
+  //   AppState.posts.splice(i, 1, res.data)
   // }
+
+  async getPostsById() {
+    AppState.post = null
+    const res = await api.get('/api/posts/', + postId)
+    AppState.post = res.data
+  }
+
+  async removePost(postId) {
+    const res = await api.delete('/api/posts/', + postId)
+    let i = AppState.posts.findIndex(p => post.id == postId)
+    if (i != -1) {
+      AppState.posts.splice(i, 1)
+    }
+  }
 
   clearPosts() {
     AppState.posts = []

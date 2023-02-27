@@ -13,7 +13,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
-
+        <div class="d-flex text-center">THE_NETWORK</div>
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <Login />

@@ -1,7 +1,4 @@
 <template>
-  <div>Hello in the profile page</div>
-
-
   <div v-if="profile" class="container">
     <div class="row mt-4">
       <div class="col-12 text-center">
@@ -37,17 +34,6 @@
       </div>
     </div>
   </div>
-
-
-  <!-- NOTE my design -->
-  <!-- <div v-if="profile" class="container-fluid">
-    <div class="row">
-      <div class="col-md-10">
-        <p>{{ profile.name }}</p>
-        <img :src="profile.picture" alt="{{profile.name}}" class="profile-picture rounded-circle">
-      </div>
-    </div>
-  </div> -->
 </template>
 
 

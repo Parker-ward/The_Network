@@ -11,7 +11,7 @@
         name="imgUrl">
     </div>
 
-    <!-- NOTE delete Button Below-->
+
     <div>
       <button type="submit" class="btn btn-primary">
         {{ editable.id ? 'Save Changes' : 'Submit' }}
