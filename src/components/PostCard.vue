@@ -16,7 +16,7 @@
         </router-link>
       </div>
       <div>
-        <button @click="removePost()" v-if="account.id == post.creatorId" class="btn btn-danger">
+        <button @click="removePost(post.id)" v-if="account.id == post.creatorId" class="btn btn-danger">
           Delete
         </button>
       </div>
@@ -57,7 +57,7 @@ export default {
     return {
       account: computed(() => AppState.account),
       // post: computed(() => AppState.post),
-      async removePost() {
+      async removePost(postId) {
         try {
           await postsService.removePost(postId)
         } catch (error) {

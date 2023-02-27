@@ -35,15 +35,15 @@ class PostsService {
   //   AppState.posts.splice(i, 1, res.data)
   // }
 
-  async getPostsById() {
+  async getPostsById(postId) {
     AppState.post = null
-    const res = await api.get('/api/posts/', + postId)
+    const res = await api.get('/api/posts/' + postId)
     AppState.post = res.data
   }
 
   async removePost(postId) {
-    const res = await api.delete('/api/posts/', + postId)
-    let i = AppState.posts.findIndex(p => post.id == postId)
+    const res = await api.delete('/api/posts/' + postId)
+    let i = AppState.posts.findIndex(p => p.id == postId)
     if (i != -1) {
       AppState.posts.splice(i, 1)
     }

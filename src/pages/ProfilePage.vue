@@ -21,6 +21,16 @@
               <i class="mdi mdi-github"></i>
             </a>
           </span>
+          <span v-if="profile.linkedin">
+            <a :href="profile.linkedin" target="_blank">
+              <i class="mdi mdi-linkedin"></i>
+            </a>
+          </span>
+          <span v-if="profile.resume">
+            <a :href="profile.resume" target="_blank">
+              <i class="mdi mdi-file-account"></i>
+            </a>
+          </span>
         </h1>
 
         <div class="col-12">
