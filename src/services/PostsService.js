@@ -10,8 +10,8 @@ class PostsService {
     const res = await api.get('/api/posts')
     logger.log('[getting posts]', res.data)
     AppState.posts = res.data.posts.map(p => new Post(p))
-    AppState.previousPage = res.data.previous
-    AppState.nextPage = res.data.next
+    AppState.previousPage = res.data.newer
+    AppState.nextPage = res.data.older
     // logger.log('posts', new Post)
   }
 
@@ -27,15 +27,6 @@ class PostsService {
     logger.log('get posts by profile', res.data)
     AppState.posts = res.data.posts.map(p => new Post(p))
   }
-
-  // async editPost(postData) {
-  //   const res = await api.put(/api/posts / + postData.id, postData)
-  //   let i = AppState.posts.findIndex(p => p.id == postData.id)
-  //   if (i == -1) {
-  //     throw new Error('are you sure?')
-  //   }
-  //   AppState.posts.splice(i, 1, res.data)
-  // }
 
   async getPostsById(postId) {
     AppState.post = null
@@ -67,9 +58,9 @@ class PostsService {
   async changePage(url) {
     const res = await api.get(url)
     logger.log('[page change]', res.data)
-    AppState.nextPage = res.data.next
-    AppState.previousPage = res.data.previous
-    AppState.posts = res.data.results
+    AppState.nextPage = res.data.older
+    AppState.previousPage = res.data.newer
+    AppState.posts = res.data.posts.map(p => new Post(p))
   }
 
 
