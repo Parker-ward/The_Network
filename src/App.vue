@@ -26,7 +26,7 @@
             </div>
           </form>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-12 d-flex justify-content-center">
             <button @click="changePage(currentPage - 1)" class="btn" :disabled="currentPage == 1"
               :class="{ 'btn btn-outline-primary': currentPage == 1, 'btn-outline-dark': currentPage > 1 }">Previous
@@ -36,7 +36,7 @@
               :class="`btn ${currentPage == totalPages ? 'btn-outline-primary' : 'btn-outline-dark'} `">Next
               Page</button>
           </div>
-        </div>
+        </div> -->
       </div>
     </div>
   </header>

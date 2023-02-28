@@ -62,13 +62,14 @@ class PostsService {
     AppState.ads = res.data
   }
 
-  async changePage(pageNumber) {
-    const res = await api.get('api/page', { params: { page: pageNumber } })
-    logger.log('changing page', res.data)
-    AppState.posts = res.data.results.map(p => new Post(p))
-    AppState.currentPage = res.data.page
-    AppState.totalPages = res.data.total_pages
+  async changePage(url) {
+    const res = await api.get(url)
+    logger.log('[CHANGE PAGE]', res.data)
+    AppState.nextPage = res.data.next
+    AppState.previousPage = res.data.previous
+    AppState.posts = res.data.results
   }
+
 
   async changePageWithQuery(pageNumber) {
     const res = await api.get('api/posts', { params: { page: pageNumber, query: AppState.query } })

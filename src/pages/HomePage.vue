@@ -18,6 +18,12 @@
 
         <CreatePostForm v-if="account.id" />
       </div>
+      <div class="d-flex justify-content-center justify-content-between">
+        <button class="btn btn-outline-dark w-20" :disabled="!previousPage"
+          @click="changePage(previousPage)">Previous</button>
+
+        <button class="btn btn-outline-dark w-20" :disabled="!nextPage" @click="changePage(nextPage)">Next</button>
+      </div>
     </div>
     <div class="row justify-content-center ">
       <div v-for="p in posts" class="col-md-8 mb-3 d-flex justify-content-center">
@@ -53,8 +59,19 @@ export default {
     });
     return {
       posts: computed(() => AppState.posts),
-      account: computed(() => AppState.account)
-    };
+      account: computed(() => AppState.account),
+      nextPage: computed(() => AppState.nextPage),
+      previousPage: computed(() => AppState.previousPage),
+
+      async changePage(url) {
+        try {
+          await postsService.changePage(url)
+        } catch (error) {
+          logger.error(error)
+          Pop.error(error.message)
+        }
+      }
+    }
   },
   components: { PostCard, CreatePostForm }
 }

@@ -17,9 +17,9 @@ export const AppState = reactive({
   post: null,
 
   ads: [],
-  Page: 0,
-  currentPage: 0,
-  totalPages: 0
+
+  nextPage: null,
+  previousPage: null
 
 
 })
