@@ -10,6 +10,8 @@ class PostsService {
     const res = await api.get('/api/posts')
     logger.log('[getting posts]', res.data)
     AppState.posts = res.data.posts.map(p => new Post(p))
+    AppState.previousPage = res.data.previous
+    AppState.nextPage = res.data.next
     // logger.log('posts', new Post)
   }
 
@@ -64,7 +66,7 @@ class PostsService {
 
   async changePage(url) {
     const res = await api.get(url)
-    logger.log('[CHANGE PAGE]', res.data)
+    logger.log('[page change]', res.data)
     AppState.nextPage = res.data.next
     AppState.previousPage = res.data.previous
     AppState.posts = res.data.results
