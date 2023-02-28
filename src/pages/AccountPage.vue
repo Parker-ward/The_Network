@@ -28,6 +28,10 @@
             <label for="github" class="form-label">github</label>
             <input v-model="editable.github" type="url" class="form-control" id="github">
           </div>
+          <div class="mb-3">
+            <label for="linkedin" class="form-label">linkedin</label>
+            <input v-model="editable.linkedin" type="url" class="form-control" id="linkedin">
+          </div>
           <div class="form-check mb-3">
             <input v-model="editable.graduated" :checked="editable.graduated" class="form-check-input" type="checkbox"
               id="flexCheckDefault">

@@ -56,7 +56,37 @@ class PostsService {
   setActivePost(post) {
     AppState.post = post
   }
+
+  async getAds() {
+    const res = await api.get('/api/ads')
+    AppState.ads = res.data
+  }
+
+  async changePage(pageNumber) {
+    const res = await api.get('api/page', { params: { page: pageNumber } })
+    logger.log('changing page', res.data)
+    AppState.posts = res.data.results.map(p => new Post(p))
+    AppState.currentPage = res.data.page
+    AppState.totalPages = res.data.total_pages
+  }
+
+  async changePageWithQuery(pageNumber) {
+    const res = await api.get('api/posts', { params: { page: pageNumber, query: AppState.query } })
+    logger.log('changing page', res.data)
+    AppState.posts = res.data.results.map(p => new Post(p))
+    AppState.currentPage = res.data.page
+    AppState.totalPages = res.data.total_pages
+  }
+  async searchPosts(searchData) {
+    const res = await api.get('api/posts', { params: searchData })
+    logger.log('searching api', res.data)
+    AppState.query = searchData.query
+    AppState.posts = res.data.posts.map(p => new Post(p))
+    AppState.currentPage = res.data.page
+    AppState.totalPages = res.data.totalpages
+  }
 }
 
 
 export const postsService = new PostsService()
+
