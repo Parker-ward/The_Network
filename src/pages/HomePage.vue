@@ -18,7 +18,7 @@
 
         <CreatePostForm v-if="account.id" />
       </div>
-      <div class="d-flex justify-content-center justify-content-between">
+      <div class="d-flex justify-content-center">
         <button class="btn btn-outline-dark w-20" :disabled="!previousPage"
           @click="changePage(previousPage)">Previous</button>
 
